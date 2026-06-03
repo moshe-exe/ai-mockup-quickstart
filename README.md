@@ -64,25 +64,16 @@ reference/
 
 Each example is **self-contained** (minimal dependencies, runs on its own) and **flexible** (clear variables, easy to adapt). Numbered for suggested learning order, but each one stands alone.
 
+Every example ships in **Python**, **Node.js**, and **TypeScript** — pick the one that matches your team's stack.
+
 ```
 examples/
 ├── 01-hello-llm/                 # Basic call to gpt-4o-mini
-│   ├── python/                   # Python + openai SDK
-│   ├── nodejs/                   # Node.js + openai SDK
-│   ├── typescript/               # TypeScript + openai SDK
-│   └── csharp/                   # .NET + Azure.AI.OpenAI (Azure-native)
-│
 ├── 02-function-calling/          # Giving tools to the LLM
-│   ├── python/
-│   ├── nodejs/
-│   └── typescript/
-│
 ├── 03-mini-agent/                # Agent with loop + tools + minimal memory
-│   ├── python/
-│   └── typescript/
-│
 └── 04-dummy-data-generator/      # Pattern: agent that writes synthetic patients/cases
     ├── python/
+    ├── nodejs/
     └── typescript/
 ```
 
@@ -96,12 +87,14 @@ Each language folder has:
 
 Recommended starting structures. Clone the one that fits your stack and only write the agent logic — everything else (container, env, LLM client, minimal UI) is already wired.
 
+Two starters are shipped fully wired. The other two are planned and will land based on demand.
+
 ```
 starter/
-├── python-fastapi-streamlit/     # Python backend + Streamlit UI (fastest to ship)
-├── python-fastapi-nextjs/        # Python backend + Next.js frontend
-├── nodejs-express-react/         # Node backend + React (Vite) frontend
-├── nextjs-fullstack/             # Next.js with API routes (single repo, one deploy)
+├── python-fastapi-streamlit/     # ✅ Python backend + Streamlit UI (fastest to ship)
+├── nextjs-fullstack/             # ✅ Next.js with API routes (single repo, one deploy)
+├── python-fastapi-nextjs/        # 🚧 TODO — Python backend + Next.js frontend
+├── nodejs-express-react/         # 🚧 TODO — Node backend + React (Vite) frontend
 └── README.md                     # Comparison table + recommendation per use case
 ```
 
