@@ -1,0 +1,12 @@
+{
+  "name": "hello-llm-nodejs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node hello.js"
+  },
+  "dependencies": {
+    "openai": "^4.73.0",
+    "dotenv": "^16.4.5"
+  }
+}
