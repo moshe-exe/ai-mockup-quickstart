@@ -137,7 +137,17 @@ Every starter ships with:
 
 ## Status
 
-🚧 **Under construction.** Structure proposed above. Files are being filled in. PRs and feedback are welcome.
+| Section | Status |
+|---------|--------|
+| `.claude/skills/` (foundry-cli, mockup-architect, dummy-redactor) | ✅ Ready |
+| `reference/` (agent-vs-workflow, 48h-checklist, common-mistakes) | ✅ Ready |
+| `examples/` (01–04, all three languages each) | ✅ Ready |
+| `starter/python-fastapi-streamlit/` | ✅ Ready |
+| `starter/nextjs-fullstack/` | ✅ Ready |
+| `starter/python-fastapi-nextjs/` | 🚧 Planned |
+| `starter/nodejs-express-react/` | 🚧 Planned |
+
+All source files pass syntax checks (Python `py_compile`, Node.js `node --check`, TypeScript `tsc --noEmit`). PRs and feedback welcome.
 
 ## License
 

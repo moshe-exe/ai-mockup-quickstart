@@ -16,6 +16,10 @@ node_modules/
 dist/
 .vite/
 
+# TypeScript build cache
+*.tsbuildinfo
+next-env.d.ts
+
 # OS
 .DS_Store
 Thumbs.db
