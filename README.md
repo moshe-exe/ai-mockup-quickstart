@@ -1,127 +1,151 @@
 # ai-mockup-quickstart
 
-Toolkit para construir mockups competentes de IA Generativa en poco tiempo — hackatones, demos, prototipos de validación.
+A toolkit for building competent Generative AI mockups fast — hackathons, demos, validation prototypes.
 
-Nace de la charla **"Cómo construir un producto de IA Generativa en menos de 48 horas"** (Desafío IA Bagó Perú 2026), pero los recursos están pensados para reutilizarse en cualquier contexto donde necesites pasar de idea a demo funcional rápido.
+Born from the talk **"How to build a Generative AI product in less than 48 hours"** (Desafío IA Bagó Perú 2026), but designed to be reused anywhere you need to go from **idea → working demo** without losing days on infrastructure.
 
-**Autor:** [Moshe Ojeda](https://github.com/moshe-exe) · cofundador de [Agentman](https://github.com/agentman) y [Mentorium](https://github.com/mentoriumai)
-
----
-
-## Para quién es esto
-
-- Equipos en un hackatón de IA Generativa con 24-48h
-- Devs construyendo prototipos rápidos para validar una hipótesis
-- Founders armando una demo para una primera ronda
-- Cualquiera que necesite llegar de **idea → mockup en pantalla** sin perder días en infraestructura
-
-No es para construir productos de producción. Es para llegar al **wow moment** lo antes posible.
+**Author:** [Moshe Ojeda](https://github.com/moshe-exe) · cofounder at [Agentman](https://github.com/agentman) and [Mentorium](https://github.com/mentoriumai)
 
 ---
 
-## Estructura del repo
+## Who this is for
+
+- Teams in a Generative AI hackathon with 24–48h
+- Developers building rapid prototypes to validate a hypothesis
+- Founders putting together a demo for a first round
+- Anyone who needs to reach the **wow moment** as fast as possible
+
+This is **not** for building production-grade products. It's for getting to a solid demo before time runs out.
+
+---
+
+## Repo structure
 
 ```
 ai-mockup-quickstart/
-├── reference/           # Cheatsheets y tablas de decisión
-├── examples/            # Código funcional, copy-paste y adaptable
-├── skills/              # Claude SKILLs para acelerar el flujo
-└── starter/             # Template de proyecto recomendado
+├── .claude/skills/        # Claude Code skills to accelerate the flow
+├── reference/             # Cheatsheets and decision tables
+├── examples/              # Working code, copy-paste friendly, multi-language
+└── starter/               # Recommended starter templates, multi-stack
 ```
 
-### `reference/` — archivos de referencia
+### `.claude/skills/` — Claude Code skills
 
-Cheatsheets y tablas que respondan rápido a *"¿qué comando uso?"* o *"¿agente o workflow?"* sin tener que leer documentación de 30 páginas.
+Drop-in skills for [Claude Code](https://claude.ai/code). Use them as-is or fork and customize — they're all editable markdown.
+
+```
+.claude/skills/
+├── foundry-cli/           # Correct `az` commands for Azure AI Foundry
+├── mockup-architect/      # Helps you cut scope and design minimal architecture
+└── dummy-redactor/        # Generates synthetic data pools with realism rules
+```
+
+Each skill includes:
+- `SKILL.md` — description, commands, mechanics
+- Templates or helpers if applicable
+- Install instructions
+
+**To install in your Claude Code project:** copy any skill folder into your project's `.claude/skills/`.
+
+### `reference/` — cheatsheets and decision tables
+
+Quick answers to *"which command do I use?"* or *"agent or workflow?"* without reading 30 pages of docs.
 
 ```
 reference/
-├── foundry-cli-cheatsheet.md    # Comandos `az` correctos para deployar gpt-4o-mini en Foundry
-├── agente-vs-workflow.md         # Tabla decisional con ejemplos healthcare
-├── 48h-checklist.md              # Los 4 bloques + checkpoints hora 12 y 24
-└── errores-comunes.md            # Patterns a evitar (multi-agente prematuro, RAG innecesario, etc.)
+├── agent-vs-workflow.md   # Decision table with healthcare examples
+├── 48h-checklist.md       # The 4 blocks + checkpoints at hour 12 and 24
+└── common-mistakes.md     # Patterns to avoid (premature multi-agent, unnecessary RAG, etc.)
 ```
 
-### `examples/` — recursos de código
+> Note: the Azure AI Foundry CLI reference lives as a Claude skill (`.claude/skills/foundry-cli/`), not here — because an agent should be the one running those commands for you anyway.
 
-Cada ejemplo es **autocontenido** (corre solo, mínimas dependencias) y **flexible** (variables claras, fácil de adaptar a tu caso). Numerados para sugerir un orden pedagógico, pero todos son independientes.
+### `examples/` — working code
+
+Each example is **self-contained** (minimal dependencies, runs on its own) and **flexible** (clear variables, easy to adapt). Numbered for suggested learning order, but each one stands alone.
 
 ```
 examples/
-├── 01-hello-llm/                 # Llamada básica a gpt-4o-mini (Python + Node)
-├── 02-function-calling/          # Cómo darle herramientas al LLM
-├── 03-mini-agent/                # Agente con loop, tools y memoria mínima
-└── 04-dummy-data-generator/      # Pattern: agente redactor de pacientes/casos sintéticos
+├── 01-hello-llm/                 # Basic call to gpt-4o-mini
+│   ├── python/                   # Python + openai SDK
+│   ├── nodejs/                   # Node.js + openai SDK
+│   ├── typescript/               # TypeScript + openai SDK
+│   └── csharp/                   # .NET + Azure.AI.OpenAI (Azure-native)
+│
+├── 02-function-calling/          # Giving tools to the LLM
+│   ├── python/
+│   ├── nodejs/
+│   └── typescript/
+│
+├── 03-mini-agent/                # Agent with loop + tools + minimal memory
+│   ├── python/
+│   └── typescript/
+│
+└── 04-dummy-data-generator/      # Pattern: agent that writes synthetic patients/cases
+    ├── python/
+    └── typescript/
 ```
 
-Cada ejemplo tiene:
-- `README.md` con qué hace, cuándo usarlo, y cómo correrlo
-- Código en Python y/o Node
-- `.env.example` con las variables que necesita
-- Un comentario clave por archivo explicando dónde personalizar
+Each language folder has:
+- `README.md` — what it does, when to use it, how to run it
+- Source code with one key comment per file pointing out where to customize
+- `.env.example` with required variables
+- `requirements.txt` / `package.json` / `*.csproj` as needed
 
-### `skills/` — Claude SKILLs
+### `starter/` — project templates
 
-Skills para [Claude Code](https://claude.ai/code) que automatizan tareas repetitivas del flujo de hackatón. Cada skill se puede usar tal cual o adaptar (son markdown editable).
-
-```
-skills/
-├── foundry-cli/                  # Skill que ayuda con comandos `az` para Foundry
-├── mockup-architect/             # Skill que ayuda a recortar scope y diseñar arquitectura mínima
-└── dummy-redactor/               # Skill que genera pools de datos sintéticos con reglas
-```
-
-Cada skill tiene:
-- `SKILL.md` con descripción, comandos, y mecánica
-- Plantillas o helpers asociados si aplica
-- Instrucciones para instalarla en tu Claude Code
-
-### `starter/` — template de proyecto
-
-Una estructura recomendada para arrancar tu mockup. Container local + backend FastAPI + frontend mínimo + .env. La idea es que clones esto y solo escribas la lógica del agente.
+Recommended starting structures. Clone the one that fits your stack and only write the agent logic — everything else (container, env, LLM client, minimal UI) is already wired.
 
 ```
 starter/
-├── docker-compose.yml            # Container local listo
-├── backend/                      # FastAPI con endpoint de chat al LLM
-├── frontend/                     # Streamlit o página HTML mínima
-├── .env.example
-└── README.md
+├── python-fastapi-streamlit/     # Python backend + Streamlit UI (fastest to ship)
+├── python-fastapi-nextjs/        # Python backend + Next.js frontend
+├── nodejs-express-react/         # Node backend + React (Vite) frontend
+├── nextjs-fullstack/             # Next.js with API routes (single repo, one deploy)
+└── README.md                     # Comparison table + recommendation per use case
 ```
 
----
-
-## Cómo usar este repo
-
-**Antes del hackatón:**
-1. Clona o descarga el `starter/` y arma tu container local
-2. Instala las skills de `skills/` en tu Claude Code
-3. Lee `reference/48h-checklist.md` para entender el método
-
-**Durante el hackatón:**
-1. Hora 0-4: usa la `mockup-architect` skill para acotar tu scope
-2. Hora 4-20: levanta el starter, adapta un ejemplo de `examples/` a tu caso
-3. Hora 20-36: itera prompts y lógica del agente
-4. Hora 36-48: pule UI, graba video backup, ensaya pitch
-
-**En cualquier momento:**
-- Si necesitas datos sintéticos → `examples/04-dummy-data-generator/`
-- Si te trabas con `az` → `reference/foundry-cli-cheatsheet.md`
-- Si dudas entre agente y workflow → `reference/agente-vs-workflow.md`
+Every starter ships with:
+- `docker-compose.yml` — single-command local setup
+- Pre-wired LLM client pointing to Azure AI Foundry
+- Minimal but presentable UI (chat interface or form-based)
+- `.env.example` with the variables you'll actually need
+- A `README.md` explaining what to change first
 
 ---
 
-## Filosofía
+## How to use this repo
 
-- **Recortar con cabeza, aunque duela.** El miedo al dolor no es razón para no decidir bien.
-- **Tu demo es lo que sobrevive al recorte.** Construye eso, nada más.
-- **El deploy de la hora 12 no es para mostrar** — es para descubrir lo que no funciona mientras todavía hay tiempo.
+**Before the hackathon:**
+1. Clone the starter that matches your stack
+2. Copy the skills you want into your project's `.claude/skills/`
+3. Read `reference/48h-checklist.md` to understand the method
+
+**During the hackathon:**
+1. **Hour 0–4:** use the `mockup-architect` skill to lock in your scope
+2. **Hour 4–20:** stand up the starter, adapt an `examples/` snippet for your case, deploy by hour 12
+3. **Hour 20–36:** iterate prompts and agent logic on the happy path
+4. **Hour 36–48:** polish UI, record a backup video, rehearse the pitch
+
+**At any point:**
+- Need synthetic data → `examples/04-dummy-data-generator/`
+- Stuck on `az` commands → use the `foundry-cli` skill (or let an agent run it)
+- Torn between agent and workflow → `reference/agent-vs-workflow.md`
 
 ---
 
-## Estado del repo
+## Philosophy
 
-🚧 **En construcción.** Estructura propuesta arriba. Los archivos se irán materializando uno por uno. PRs y feedback son bienvenidos.
+- **Cut with intention, even when it hurts.** Fear of pain isn't a reason to skip a good decision.
+- **Your demo is what survives the cut.** Build that, nothing more.
+- **The hour-12 deploy isn't for showing** — it's for discovering what doesn't work while you still have time to fix it.
 
-## Licencia
+---
 
-MIT — usa, modifica, redistribuye libremente.
+## Status
+
+🚧 **Under construction.** Structure proposed above. Files are being filled in. PRs and feedback are welcome.
+
+## License
+
+MIT — use, modify, redistribute freely.
